@@ -23,7 +23,7 @@ Procedure to execute this script:
 -    Command to execute:
 -        pip install -r requirements.txt
     
--    4.) Import excel file and template image
+-    4.) Import excel file, template image and also create a output folder. 
 
 -    5.) Execute the script:
 
