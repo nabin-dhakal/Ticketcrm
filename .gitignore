@@ -206,3 +206,10 @@ media/
 static/
 
 *.xlsx
+
+*.png 
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
