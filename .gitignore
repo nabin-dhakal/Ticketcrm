@@ -204,3 +204,5 @@ local.json
 media/
 
 static/
+
+*.xlsx
