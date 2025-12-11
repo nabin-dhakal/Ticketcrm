@@ -7,6 +7,7 @@ from email.message import EmailMessage
 import mimetypes
 from io import BytesIO
 from matplotlib import font_manager
+import qrcode
 
 
 load_dotenv()
@@ -35,8 +36,18 @@ def SendEmail(sender_email,password,receiver_email,subject,body,attachment_path=
         server.send_message(msg)
         print(f"Email sent to {receiver_email}")
 
+def QRcode_generator(data):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
 
-
+    img = qr.make_image(fill_color="black", back_color="white")
+    return img
 
 def create_image_with_text(input_image_path, text, position=(50, 50), font_size=40, text_color=(255, 255, 255), font_path=None):
     img = Image.open(input_image_path)
@@ -48,6 +59,10 @@ def create_image_with_text(input_image_path, text, position=(50, 50), font_size=
         font = ImageFont.truetype(font_path_found, font_size)
 
     draw.text(position, text, fill=text_color, font=font)
+    qr = QRcode_generator(text)
+    qr = qr.resize((400,400))
+    img.paste(qr, (img.width - 450, img.height - 450))
+
 
     if not os.path.exists("output"):
         os.makedirs("output")
