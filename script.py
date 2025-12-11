@@ -86,7 +86,13 @@ def main():
         receiver_email = row['Email']
         name = row['Name']
         subject = "Invitation to Fresher Party"
-        body = f"Hello {name},\n\nPlease find your Ticket  attached."
+        body = f"Dear {name},\n\n
+
+Your Fresher’s Party 2025 ticket is attached below. This pass grants you entry to an unforgettable day filled with music, fun, and celebration.\n\n
+
+Please keep your ticket safe and present it at the entrance during the event.\n\n
+
+We look forward to seeing you there!"\n\n
 
         input_image_path = os.getenv('Image_path')
         text_to_add = name
